@@ -1,0 +1,1 @@
+ps aux --sort=-%mem | awk 'NR==1 || NR<=6 {print $2, $11, $4}' | column -ts
