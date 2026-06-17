@@ -58,7 +58,7 @@ perform_backup() {
 main() {
 
     # tham số help
-    if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+    if [ $# -eq 1 ] && { [ "$1" = "-h" ] || [ "$1" = "--help" ]; }; then
         show_usage
         return 0
     fi
@@ -66,7 +66,7 @@ main() {
     # Kiểm tra tham số
     if [ $# -ne 1 ]; then
         echo "Lỗi: Số lượng tham số không hợp lệ" >&2
-        show_usage
+        echo "Gõ '$0 -h' hoặc '$0 --help' để xem hướng dẫn" >&2
         return 1
     fi
     
@@ -75,7 +75,7 @@ main() {
     # Kiểm tra xem thư mục có tồn tại và là thư mục hay không
     if [ ! -d "$target_dir" ]; then
         echo "Lỗi: Thư mục '$target_dir' không tồn tại hoặc không phải là thư mục" >&2
-        show_usage
+        echo "Gõ '$0 -h' hoặc '$0 --help' để xem hướng dẫn" >&2
         return 1
     fi
     
