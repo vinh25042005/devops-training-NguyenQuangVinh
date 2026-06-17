@@ -4,10 +4,10 @@ set -euo pipefail
 
 show_usage() {
     echo "Cách dùng: $0 <thư_mục>"
-    echo "Tạo bản sao lưu nén của thư mục được chỉ định"
+    echo "Tạo bản sao lưu của thư mục được chỉ định"
     echo ""
     echo "Tham số:"
-    echo "  <thư_mục>  Đường dẫn đến thư mục cần sao lưu"
+    echo "  <thư_mục>  Đường dẫn đến thư mục cần backup"
     echo ""
     echo "Đầu ra:"
     echo "  Tạo file ~/backups/<tên_thư_mục>-YYYYMMDD-HHMMSS.tar.gz"
@@ -56,6 +56,13 @@ perform_backup() {
 
 
 main() {
+
+    # tham số help
+    if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+        show_usage
+        return 0
+    fi
+
     # Kiểm tra tham số
     if [ $# -ne 1 ]; then
         echo "Lỗi: Số lượng tham số không hợp lệ" >&2
