@@ -1,3 +1,3 @@
 host=vi
 kernel=Linux
-uptime= 08:40:28  4:36,  1 user,  load average: 0.00, 0.06, 0.03
+uptime= 08:50:35  4:45,  1 user,  load average: 0.00, 0.05, 0.02
