@@ -12,7 +12,6 @@ show_usage() {
     echo "Đầu ra:"
     echo "  Tạo file ~/backups/<tên_thư_mục>-YYYYMMDD-HHMMSS.tar.gz"
     echo "  Hiển thị số lượng file và tổng dung lượng đã sao lưu"
-    exit 1
 }
 
 # bắt đầu backup
@@ -59,16 +58,18 @@ perform_backup() {
 main() {
     # Kiểm tra tham số
     if [ $# -ne 1 ]; then
-        echo "Lỗi: Số lượng tham số không hợp lệ"
+        echo "Lỗi: Số lượng tham số không hợp lệ" >&2
         show_usage
+        return 1
     fi
     
     local target_dir="$1"
     
     # Kiểm tra xem thư mục có tồn tại và là thư mục hay không
     if [ ! -d "$target_dir" ]; then
-        echo "Lỗi: Thư mục '$target_dir' không tồn tại hoặc không phải là thư mục"
+        echo "Lỗi: Thư mục '$target_dir' không tồn tại hoặc không phải là thư mục" >&2
         show_usage
+        return 1
     fi
     
     target_dir="${target_dir%/}"
@@ -77,4 +78,10 @@ main() {
     perform_backup "$target_dir"
 }
 
-main "$@"
+main "$@" && exit_code=0 || exit_code=$?
+if [ $exit_code -eq 0 ]; then
+    echo "Exit code: 0 (Thành công)"
+else
+    echo "Exit code: $exit_code (Thất bại)" >&2
+fi
+exit $exit_code
