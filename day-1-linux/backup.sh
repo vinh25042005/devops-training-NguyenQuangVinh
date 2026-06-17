@@ -42,7 +42,7 @@ perform_backup() {
     file_count=$(find "$source_dir" -type f | wc -l)
     
     # tính tổng dung lượng của thư mục
-    total_size=$(du -b "$source_dir" | cut -f1)
+    total_size=$(du -sh "$source_dir" | cut -f1)
     
     # tạo file backup
     echo "Đang tạo bản sao lưu: $backup_path"
@@ -51,7 +51,8 @@ perform_backup() {
     # Output
     echo "File sao lưu: $backup_path"
     echo "Số lượng file đã sao lưu: $file_count"
-    echo "Tổng dung lượng đã sao lưu: $(numfmt --to=iec "$total_size") ($total_size bytes)"
+    echo "Tổng dung lượng đã sao lưu: $total_size"
+
 }
 
 
