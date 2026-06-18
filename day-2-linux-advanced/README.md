@@ -22,17 +22,59 @@ chmod +x lab-process.sh
 ```
 
 ### Part B - systemd service
+File `webapp.service`: chạy Python HTTP server trên port 8080
+
+>  **Trước khi chạy:** Mở file `webapp.service`, sửa dòng `User=vinh2` thành username theo 
 ```bash
-#Cài nginx
-sudo apt update
-sudo apt install nginx -y
+whoami
 ```
+
 ```bash
-# Kiểm tra đã chạy chưa
-systemctl status nginx
-# → Active: active (running)
-# Test thử
-curl http://localhost
+# 1. Tạo thư mục và file HTML
+sudo mkdir -p /opt/webapp
+echo '<h1>Web app đã lên!</h1>' | sudo tee index.html
+
+# 2. Copy service file vào systemd
+sudo cp webapp.service /etc/systemd/system/
+
+# 3. Load lại cấu hình
+sudo systemctl daemon-reload
+
+# 4. Enable + Start
+sudo systemctl enable --now webapp
+
+# 5. Verify
+systemctl status webapp
+curl http://localhost:8080
+```
+
+Test auto-restart  
+```bash
+# Lấy PID hiện tại
+MAINPID=$(systemctl show -p MainPID webapp | cut -d= -f2)
+echo "PID hiện tại: $MAINPID"
+
+# Kill process
+sudo kill -9 $MAINPID
+sleep 4
+
+# Kiểm tra service đã restart với PID mới
+systemctl status webapp
+curl http://localhost:8080
+```
+Nếu port 8080 đã bị dùng: sửa dòng ExecStart=... 8080 trong webapp.service thành port khác, rồi chạy:  
+```bash
+sudo cp webapp.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl restart webapp
+curl http://localhost:8765
+```
+Tắt web app
+```bash
+sudo systemctl stop webapp
+sudo systemctl disable webapp
+sudo rm webapp.service
+sudo systemctl daemon-reload
 ```
 ## 3. Kết quả
 
