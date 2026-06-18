@@ -67,7 +67,7 @@ Nếu port 8080 đã bị dùng: sửa dòng ExecStart=... 8080 trong webapp.ser
 sudo cp webapp.service /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl restart webapp
-curl http://localhost:8765
+curl http://localhost:<port mới>
 ```
 Tắt web app
 ```bash
