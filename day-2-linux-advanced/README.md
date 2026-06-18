@@ -4,11 +4,12 @@
 - **Intern**: `Nguyễn Quang Vinh`
 - **Phase / Week / Day**: `Phase 1 / Week 1 / Day 2`
 - **Branch**: `phase-1/week-1/day-2-linux-advanced`
-- **Submitted at**: `<2026-06-17 17:16>` (timezone +07)
-- **Time spent**: `<4h>`
+- **Submitted at**: `<2026-06-18 15:35>` (timezone +07)
+- **Time spent**: `<5h>`
 
 ## 1. Mục tiêu
-
+- Học thêm về quản lý process, phân quyền trong linux
+- Viết được systemd để daemonize service
 ## 2. Cách chạy
 
 ### Part A - Process & Signal
@@ -110,15 +111,52 @@ killall yes
 # Dừng monitor
 Ctrl+C
 ```
-## 3. Kết quả
 
+### Part D: Monitoring script
+
+File `monitor.sh` + `monitor.service`: theo dõi CPU%, MEM%, top 3 process mỗi 10s.  
+CPU > 80% trong 3 sample liên tiếp → WARNING vào `~/monitor.log`.
+
+```bash
+# 1. Cài script
+sudo mkdir -p /opt/monitor
+sudo cp monitor.sh /opt/monitor/
+sudo chmod +x /opt/monitor/monitor.sh
+
+# 2. Cài service
+sudo cp monitor.service /etc/systemd/system/
+sudo systemctl daemon-reload
+
+# 3. Enable + Start
+sudo systemctl enable --now monitor
+
+# 4. Verify
+systemctl status monitor
+
+# 5. Xem log output và warning
+journalctl -u monitor -f
+tail -f ~/monitor.log
+```
+
+**Tắt service**
+```bash
+sudo systemctl stop monitor
+sudo systemctl disable monitor
+sudo rm /etc/systemd/system/monitor.service
+sudo systemctl daemon-reload
+```
+
+## 3. Kết quả
+- Hoàn thành được các yêu cầu của bài
+- các hình ảnh kết quả được lưu trong screenshots/
 
 ## 4. Khó khăn & cách giải quyết
-
+- chưa biết cách chạy bằng service nên mất thời gian tra cứu và tìm hiểu cách lệnh
+- ở part A mất thời gian để hiểu và so sánh sự khác nhau giữa các lệnh
 
 ## 5. Reference
 - Google
-- AI deepseek
+- Hỏi các mô hình AI
 
 ## 6. Self-check
 - [x] Code chạy được trên máy sạch.
