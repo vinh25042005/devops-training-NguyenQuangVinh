@@ -15,7 +15,7 @@ trap cleanup SIGINT
 
 # Lấy %cpu 
 get_cpu_usage() {
-    top -bn2 -d 1 | grep "Cpu(s)"| awk '{print int(100 - $8)}'
+    top -bn2 -d 1 | grep "Cpu(s)" | tail -1 | awk '{print int(100 - $8)}'
 }
 # Lấy %mem
 get_mem_usage() {
@@ -24,7 +24,8 @@ get_mem_usage() {
 
 # Lấy top 3 process tốn CPU
 get_top_processes() {
-    top -bn1 -o %CPU | grep -A3 "PID USER" | awk '{printf "  PID %s CPU %s%% MEM %s%%\n", $1, $9, $10}'
+    local CORES=$(nproc)
+    top -bn1 -o %CPU | grep -A3 "PID USER" | tail -3 | awk -v c="$CORES" '{printf "  PID %s CPU %.1f%% MEM %s%%\n", $1, $9/c, $10}'
 }
 
 while true; do
