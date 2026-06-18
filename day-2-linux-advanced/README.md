@@ -76,6 +76,40 @@ sudo systemctl disable webapp
 sudo rm webapp.service
 sudo systemctl daemon-reload
 ```
+
+### Part C: Permission lab
+- Các bước thực hiện được ghi tại permissions-lab.md
+
+### Part D: Monitoring script
+
+```bash
+# Cấp quyền thực thi
+chmod +x monitor.sh
+```
+```bash
+# Chạy
+./monitor.sh
+``` 
+
+**Test WARNING (CPU > 80%):****
+```bash
+# Terminal 1: chạy monitor
+./monitor.sh
+
+# Terminal 2: tạo CPU load giả lập
+yes > /dev/null &
+yes > /dev/null &
+yes > /dev/null &
+yes > /dev/null &
+```
+```bash
+# Kiểm tra log
+cat ~/monitor.log
+# Tắt load
+killall yes
+# Dừng monitor
+Ctrl+C
+```
 ## 3. Kết quả
 
 
