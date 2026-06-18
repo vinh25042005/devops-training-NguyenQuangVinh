@@ -1,5 +1,5 @@
 
-## Task: `Day 1 — Linux Fundamentals`
+## Task: `Day 2 — Linux Advanced`
 
 - **Intern**: `Nguyễn Quang Vinh`
 - **Phase / Week / Day**: `Phase 1 / Week 1 / Day 2`
