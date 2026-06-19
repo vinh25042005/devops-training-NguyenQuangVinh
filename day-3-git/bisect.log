@@ -1,0 +1,29 @@
+vinh2@vi:~/work/git-lab$ git bisect start
+git bisect bad HEAD
+git bisect good HEAD~20
+status: waiting for both good and bad commits
+status: waiting for good commit(s), bad commit known
+Bisecting: 9 revisions left to test after this (roughly 3 steps)
+[20b2f8e8ae7323df7282dfe4a035dc9e0434d524] chore: commit 10
+vinh2@vi:~/work/git-lab$ cat app.py 
+print("hello")
+vinh2@vi:~/work/git-lab$ git bisect good
+Bisecting: 4 revisions left to test after this (roughly 2 steps)
+[0ad6df63239b056a0cd58dc76bf86c12de2216a7] chore: commit 15
+vinh2@vi:~/work/git-lab$ cat app.py 
+print("hello bug")
+vinh2@vi:~/work/git-lab$ git bisect bad
+Bisecting: 2 revisions left to test after this (roughly 1 step)
+[2313f9c0e51105446853a36f3998218696485b6b] chore: commit 12
+vinh2@vi:~/work/git-lab$ cat app.py 
+print("hello")
+vinh2@vi:~/work/git-lab$ git bisect good 
+Bisecting: 0 revisions left to test after this (roughly 1 step)
+[5d28fb93b7fde1af020466fcc5d1438d6fbe86c5] chore: commit 14
+vinh2@vi:~/work/git-lab$ cat app.py 
+print("hello bug")
+vinh2@vi:~/work/git-lab$ git bisect bad
+Bisecting: 0 revisions left to test after this (roughly 0 steps)
+[fbbd5b0d1eb2c9444a5ca0de28166b066f8c66b1] chore: commit 13
+vinh2@vi:~/work/git-lab$ cat app.py 
+print("hello bug")
