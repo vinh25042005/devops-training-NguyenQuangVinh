@@ -12,6 +12,8 @@
 - Tìm hiểu 2 workflow phổ biến trunk-based vs GitFlow
 
 ## 2. Cách chạy
+### Cách thay đổi được thực hiện tại link github:
+https://github.com/vinh25042005/git-lab/
 ## Part A — Rebase + cherry-pick + conflict
 
 ### Bước 1: Tạo branch `feature-a`, commit 3 file khác nhau
