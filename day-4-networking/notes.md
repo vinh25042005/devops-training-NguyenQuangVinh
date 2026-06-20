@@ -1,8 +1,5 @@
-# Day 4 — Networking Essentials
 
 ## Part A — Networking primer
-
----
 
 ### Câu 1: So sánh OSI 7 lớp với TCP/IP 4 lớp
 
