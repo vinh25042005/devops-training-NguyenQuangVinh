@@ -102,3 +102,74 @@ rtt min/avg/max/mdev = 0.030/0.075/0.375/0.095 ms
 ```bash
 sudo sed -i '/test123/d' /etc/hosts
 ```
+
+## 3. Phân biệt `/etc/hosts`, `/etc/resolv.conf`, systemd-resolved
+
+### `/etc/hosts`
+
+File tĩnh ánh xạ hostname → IP, kiểm tra trước khi hỏi DNS.
+
+```bash
+cat /etc/hosts
+```
+```
+127.0.0.1       localhost
+127.0.1.1       vi.localdomain  vi
+127.0.0.1       test123
+```
+- Độ ưu tiên cao nhất — nếu có trong hosts, không cần query DNS.
+- Dùng để chặn site, map domain nội bộ, dev local.
+- Phải sửa thủ công.
+
+### `/etc/resolv.conf`
+
+File cấu hình DNS resolver — khai báo server DNS sẽ dùng.
+
+```bash
+cat /etc/resolv.conf
+```
+```
+nameserver 10.255.255.254
+```
+
+- **nameserver:** địa chỉ DNS resolver `10.255.255.254` .
+
+### systemd-resolved
+
+Service DNS resolver của systemd.
+
+```bash
+resolvectl status
+```
+
+```
+Global
+         Protocols: -LLMNR -mDNS -DNSOverTLS DNSSEC=no/unsupported
+  resolv.conf mode: foreign
+Current DNS Server: 10.255.255.254
+       DNS Servers: 10.255.255.254
+
+Link 2 (eth0)
+    Current Scopes: none
+         Protocols: -DefaultRoute -LLMNR -mDNS -DNSOverTLS DNSSEC=no/unsupported
+
+Link 3 (docker0)
+    Current Scopes: none
+         Protocols: -DefaultRoute -LLMNR -mDNS -DNSOverTLS DNSSEC=no/unsupported
+```
+
+**Giải thích output:**
+
+- **resolv.conf mode: foreign** — systemd-resolved không tự quản lý `/etc/resolv.conf`, mà dùng file có sẵn (do WSL tạo).
+- **Current DNS Server: 10.255.255.254** — DNS server đang dùng.
+- **DNSSEC=no/unsupported** — không bật DNSSEC.
+- **-LLMNR -mDNS -DNSOverTLS** — các protocol này đang tắt 
+- **Link 2 (eth0)** và **Link 3 (docker0)** — không có scope nào đang hoạt động, chỉ dùng global config.
+
+### So sánh
+
+| Thành phần | Vai trò | Ưu tiên |
+|------------|---------|---------|
+| `/etc/hosts` | File tĩnh hostname → IP | Cao nhất, được check đầu tiên |
+| `/etc/resolv.conf` | Cấu hình DNS server | Thứ 2 — nếu không có trong hosts |
+| systemd-resolved | Service quản lý DNS | Thay thế resolv.conf truyền thống |
