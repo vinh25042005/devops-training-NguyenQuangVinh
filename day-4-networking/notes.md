@@ -166,9 +166,8 @@ CLIENT (port A)                     SERVER (port 80)
 - Server không biết client thật là ai, chỉ thấy IP của proxy.
 - **Ưu điểm:**
   - **Ẩn danh client** — Nhân viên dùng proxy công ty, server thấy IP công ty
-  - **Vượt tường lửa / geo-blocking** — Dùng proxy ở Mỹ để xem Netflix US
+  - **Vượt tường lửa** — Dùng proxy ở Mỹ để xem Netflix Mỹ
   - **Kiểm soát truy cập** — Công ty chặn Facebook, YouTube, LOL
-  - **Cache nội dung (giảm băng thông)** — Squid proxy cache web tĩnh
   - **Lọc nội dung** — Trường học chặn site không phù hợp
 
 **Reverse Proxy (proxy ngược):**
@@ -182,5 +181,4 @@ CLIENT (port A)                     SERVER (port 80)
   - **Load balancing** — nginx phân phối request đến nhiều app server
   - **SSL termination** — Proxy xử lý HTTPS, backend nhận HTTP plain
   - **Bảo mật** — Giấu backend, chặn DDoS, rate limiting
-  - **Cache** — Cache response giảm tải backend (Varnish, nginx)
   - **Serve nhiều site trên 1 IP** — Virtual hosting (1 IP, nhiều domain)
