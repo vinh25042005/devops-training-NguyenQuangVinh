@@ -36,7 +36,7 @@ Pipeline tự động chạy khi push lên GitHub
 - **Push / PR vào `main`** → chạy lint + test.
 - **Push vào `main`** → chạy thêm build-and-push image lên GHCR.
 
-Link repo: [https://github.com/vinh25042005/demo-app](https://github.com/vinh25042005/demo-app)
+Link repo: [https://github.com/vinh25042005/demo-app/tree/day6-cicd](https://github.com/vinh25042005/demo-app/tree/day6-cicd)
 
 ## 3. Kết quả
 
