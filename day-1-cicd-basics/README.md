@@ -3,8 +3,8 @@
 - **Intern**: `Nguyễn Quang Vinh`
 - **Phase / Week / Day**: `Phase 1 / Week 2 / Day 1`
 - **Branch**: `phase-1/week-2/day-1-cicd-basics`
-- **Submitted at**: `2026-06-22 23:59` (timezone +07)
-- **Time spent**: `<số giờ>`
+- **Submitted at**: `2026-06-22 16:00` (timezone +07)
+- **Time spent**: `<5h>`
 
 ## 1. Mục tiêu
 - Xây dựng CI/CD pipeline cho `demo-app`  gồm 4 stage: lint → test → build Docker image → push lên GHCR.
