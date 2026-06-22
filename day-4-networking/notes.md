@@ -20,15 +20,7 @@
 - **Tầng 2 — Internet (tương ứng OSI 3):** Định tuyến, địa chỉ IP — IP (IPv4/IPv6), ICMP
 - **Tầng 1 — Network Access (tương ứng OSI 1+2):** Vật lý + data link — Ethernet, ARP, Wi-Fi
 
-**So sánh OSI vs TCP/IP:**
 
-- **Số tầng:** OSI 7 tầng — TCP/IP 4 tầng
-- **Tính chất:** OSI là mô hình lý thuyết, tham khảo — TCP/IP là mô hình thực tế, triển khai trên Internet
-- **Tách Presentation/Session:** OSI có — TCP/IP không (gộp hết vào Application)
-- **Giao thức:** OSI định nghĩa trước, ít dùng — TCP/IP giao thức ra đời trước, phổ biến
-- **Áp dụng:** OSI dùng để giảng dạy, thiết kế — TCP/IP dùng để vận hành Internet
-
----
 
 ### Câu 2: TCP 3-way handshake — vẽ ASCII diagram + giải thích cờ SYN/ACK/FIN/RST
 
