@@ -1,16 +1,17 @@
-Script started on 2026-06-23 06:32:03+00:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="120" LINES="21"]
+Script started on 2026-06-23 07:35:41+00:00 [TERM="xterm-256color" TTY="/dev/pts/5" COLUMNS="120" LINES="21"]
 [?2004h]0;vinh2@vi: ~/work/devops-training-NguyenQuangVinh/day-3-terraform/1-local[01;32mvinh2@vi[00m:[01;34m~/work/devops-training-NguyenQuangVinh/day-3-terraform/1-local[00m$ [7mterraform init[27m
-[7mterraform plan[27m
-[7mterraform apply -auto-approve[27m[A[A]0;vinh2@vi: ~/work/devops-training-NguyenQuangVinh/day-3-terraform/1-local[01;32mvinh2@vi[00m:[01;34m~/work/devops-training-NguyenQuangVinh/day-3-terraform/1-local[00m$ terraform init
-terraform plan
-terraform apply -auto-approve
-[?2004l[0m[1mInitializing provider plugins found in the configuration...[0m
-- Finding hashicorp/local versions matching "~> 2.5"...
+
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cterraform init
+
+[A
+[?2004l
+[0m[1mInitializing provider plugins found in the configuration...[0m
 - Finding hashicorp/random versions matching "~> 3.6"...
-- Installing hashicorp/local v2.9.0...
-- Installed hashicorp/local v2.9.0 (signed by HashiCorp)
+- Finding hashicorp/local versions matching "~> 2.5"...
 - Installing hashicorp/random v3.9.0...
 - Installed hashicorp/random v3.9.0 (signed by HashiCorp)
+- Installing hashicorp/local v2.9.0...
+- Installed hashicorp/local v2.9.0 (signed by HashiCorp)
 
 [0m[1mInitializing the backend...[0m
 
@@ -29,6 +30,12 @@ should now work.
 If you ever set or change modules or backend configuration for Terraform,
 rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.[0m
+[?2004h]0;vinh2@vi: ~/work/devops-training-NguyenQuangVinh/day-3-terraform/1-local[01;32mvinh2@vi[00m:[01;34m~/work/devops-training-NguyenQuangVinh/day-3-terraform/1-local[00m$ [7mterraform plan[27m
+
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cterraform plan
+
+[A
+[?2004l
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
 following symbols:
@@ -54,7 +61,7 @@ Terraform will perform the following actions:
 [1m  # random_pet.name[0m will be created
 [0m  [32m+[0m[0m resource "random_pet" "name" {
       [32m+[0m[0m id        = (known after apply)
-      [32m+[0m[0m length    = 3
+      [32m+[0m[0m length    = 2
       [32m+[0m[0m separator = "-"
     }
 
@@ -67,6 +74,8 @@ Changes to Outputs:
 
 Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if
 you run "terraform apply" now.
+[?2004h]0;vinh2@vi: ~/work/devops-training-NguyenQuangVinh/day-3-terraform/1-local[01;32mvinh2@vi[00m:[01;34m~/work/devops-training-NguyenQuangVinh/day-3-terraform/1-local[00m$ [7mterraform apply -auto-approve[27mterraform apply -auto-approve
+[?2004l
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
 following symbols:
@@ -92,7 +101,7 @@ Terraform will perform the following actions:
 [1m  # random_pet.name[0m will be created
 [0m  [32m+[0m[0m resource "random_pet" "name" {
       [32m+[0m[0m id        = (known after apply)
-      [32m+[0m[0m length    = 3
+      [32m+[0m[0m length    = 2
       [32m+[0m[0m separator = "-"
     }
 
@@ -101,16 +110,155 @@ Terraform will perform the following actions:
 Changes to Outputs:
   [32m+[0m[0m file_path = (known after apply)
 [0m[1mrandom_pet.name: Creating...[0m[0m
-[0m[1mrandom_pet.name: Creation complete after 0s [id=presumably-tender-civet][0m
+[0m[1mrandom_pet.name: Creation complete after 0s [id=modern-toucan][0m
 [0m[1mlocal_file.hello: Creating...[0m[0m
-[0m[1mlocal_file.hello: Creation complete after 0s [id=880c6b2fc4a4fbb5a0f87de4412ab9c82c47c83c][0m
+[0m[1mlocal_file.hello: Creation complete after 0s [id=2acd271bd3e0337d23df55e3b7eff98f3d4373b7][0m
 [0m[1m[32m
 Apply complete! Resources: 2 added, 0 changed, 0 destroyed.[0m
 [0m[1m[32m
 Outputs:
 
-[0mfile_path = "./out/hello-presumably-tender-civet.txt"
-[?2004h]0;vinh2@vi: ~/work/devops-training-NguyenQuangVinh/day-3-terraform/1-local[01;32mvinh2@vi[00m:[01;34m~/work/devops-training-NguyenQuangVinh/day-3-terraform/1-local[00m$ e[Kẽ[Kexit
-[?2004lexit
+[0mfile_path = "./out/hello-modern-toucan.txt"
+[?2004h]0;vinh2@vi: ~/work/devops-training-NguyenQuangVinh/day-3-terraform/1-local[01;32mvinh2@vi[00m:[01;34m~/work/devops-training-NguyenQuangVinh/day-3-terraform/1-local[00m$ [7mterraform plan[27m
 
-Script done on 2026-06-23 06:32:13+00:00 [COMMAND_EXIT_CODE="0"]
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cterraform plan
+
+[A
+[?2004l
+[0m[1mrandom_pet.name: Refreshing state... [id=modern-toucan][0m
+[0m[1mlocal_file.hello: Refreshing state... [id=2acd271bd3e0337d23df55e3b7eff98f3d4373b7][0m
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
+following symbols:
+[31m-[0m/[32m+[0m destroy and then create replacement[0m
+
+Terraform will perform the following actions:
+
+[1m  # local_file.hello[0m must be [1m[31mreplaced[0m
+[0m[31m-[0m/[32m+[0m[0m resource "local_file" "hello" {
+      [33m~[0m[0m content              = "Hello from terraform, modern-toucan!" -> (known after apply) [31m# forces replacement[0m[0m
+      [33m~[0m[0m content_base64sha256 = "MUXbAXfrmn6PjedJIwv0KjuqyxOrtO24KsZr4lgCnUI=" -> (known after apply)
+      [33m~[0m[0m content_base64sha512 = "ME6/oCe1xdEcS6erKrDp8ryYsQS3DI2g4c7xXMoEDX+09Pq4FC6+7abX0jnNSVg00EqlkSXSTiDSWZb7O7HKlg==" -> (known after apply)
+      [33m~[0m[0m content_md5          = "8464d5039bfaf216c87c81763a384e4e" -> (known after apply)
+      [33m~[0m[0m content_sha1         = "2acd271bd3e0337d23df55e3b7eff98f3d4373b7" -> (known after apply)
+      [33m~[0m[0m content_sha256       = "3145db0177eb9a7e8f8de749230bf42a3baacb13abb4edb82ac66be258029d42" -> (known after apply)
+      [33m~[0m[0m content_sha512       = "304ebfa027b5c5d11c4ba7ab2ab0e9f2bc98b104b70c8da0e1cef15cca040d7fb4f4fab8142ebeeda6d7d239cd495834d04aa59125d24e20d25996fb3bb1ca96" -> (known after apply)
+      [33m~[0m[0m filename             = "./out/hello-modern-toucan.txt" -> (known after apply) [31m# forces replacement[0m[0m
+      [33m~[0m[0m id                   = "2acd271bd3e0337d23df55e3b7eff98f3d4373b7" -> (known after apply)
+        [90m# (2 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # random_pet.name[0m must be [1m[31mreplaced[0m
+[0m[31m-[0m/[32m+[0m[0m resource "random_pet" "name" {
+      [33m~[0m[0m id        = "modern-toucan" -> (known after apply)
+      [33m~[0m[0m length    = 2 [33m->[0m[0m 3 [31m# forces replacement[0m[0m
+        [90m# (1 unchanged attribute hidden)[0m[0m
+    }
+
+[1mPlan:[0m [0m2 to add, 0 to change, 2 to destroy.
+
+Changes to Outputs:
+  [33m~[0m[0m file_path = "./out/hello-modern-toucan.txt" -> (known after apply)
+[90m
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[0m
+
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if
+you run "terraform apply" now.
+[?2004h]0;vinh2@vi: ~/work/devops-training-NguyenQuangVinh/day-3-terraform/1-local[01;32mvinh2@vi[00m:[01;34m~/work/devops-training-NguyenQuangVinh/day-3-terraform/1-local[00m$ [7mterraform apply -auto-approve[27mterraform apply -auto-approve
+[?2004l
+[0m[1mrandom_pet.name: Refreshing state... [id=modern-toucan][0m
+[0m[1mlocal_file.hello: Refreshing state... [id=2acd271bd3e0337d23df55e3b7eff98f3d4373b7][0m
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
+following symbols:
+[31m-[0m/[32m+[0m destroy and then create replacement[0m
+
+Terraform will perform the following actions:
+
+[1m  # local_file.hello[0m must be [1m[31mreplaced[0m
+[0m[31m-[0m/[32m+[0m[0m resource "local_file" "hello" {
+      [33m~[0m[0m content              = "Hello from terraform, modern-toucan!" -> (known after apply) [31m# forces replacement[0m[0m
+      [33m~[0m[0m content_base64sha256 = "MUXbAXfrmn6PjedJIwv0KjuqyxOrtO24KsZr4lgCnUI=" -> (known after apply)
+      [33m~[0m[0m content_base64sha512 = "ME6/oCe1xdEcS6erKrDp8ryYsQS3DI2g4c7xXMoEDX+09Pq4FC6+7abX0jnNSVg00EqlkSXSTiDSWZb7O7HKlg==" -> (known after apply)
+      [33m~[0m[0m content_md5          = "8464d5039bfaf216c87c81763a384e4e" -> (known after apply)
+      [33m~[0m[0m content_sha1         = "2acd271bd3e0337d23df55e3b7eff98f3d4373b7" -> (known after apply)
+      [33m~[0m[0m content_sha256       = "3145db0177eb9a7e8f8de749230bf42a3baacb13abb4edb82ac66be258029d42" -> (known after apply)
+      [33m~[0m[0m content_sha512       = "304ebfa027b5c5d11c4ba7ab2ab0e9f2bc98b104b70c8da0e1cef15cca040d7fb4f4fab8142ebeeda6d7d239cd495834d04aa59125d24e20d25996fb3bb1ca96" -> (known after apply)
+      [33m~[0m[0m filename             = "./out/hello-modern-toucan.txt" -> (known after apply) [31m# forces replacement[0m[0m
+      [33m~[0m[0m id                   = "2acd271bd3e0337d23df55e3b7eff98f3d4373b7" -> (known after apply)
+        [90m# (2 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # random_pet.name[0m must be [1m[31mreplaced[0m
+[0m[31m-[0m/[32m+[0m[0m resource "random_pet" "name" {
+      [33m~[0m[0m id        = "modern-toucan" -> (known after apply)
+      [33m~[0m[0m length    = 2 [33m->[0m[0m 3 [31m# forces replacement[0m[0m
+        [90m# (1 unchanged attribute hidden)[0m[0m
+    }
+
+[1mPlan:[0m [0m2 to add, 0 to change, 2 to destroy.
+
+Changes to Outputs:
+  [33m~[0m[0m file_path = "./out/hello-modern-toucan.txt" -> (known after apply)
+[0m[1mlocal_file.hello: Destroying... [id=2acd271bd3e0337d23df55e3b7eff98f3d4373b7][0m[0m
+[0m[1mlocal_file.hello: Destruction complete after 0s[0m
+[0m[1mrandom_pet.name: Destroying... [id=modern-toucan][0m[0m
+[0m[1mrandom_pet.name: Destruction complete after 0s[0m
+[0m[1mrandom_pet.name: Creating...[0m[0m
+[0m[1mrandom_pet.name: Creation complete after 0s [id=usually-caring-whale][0m
+[0m[1mlocal_file.hello: Creating...[0m[0m
+[0m[1mlocal_file.hello: Creation complete after 0s [id=4115004068cb89b1a8f785668a1f57e3f9d0024e][0m
+[0m[1m[32m
+Apply complete! Resources: 2 added, 0 changed, 2 destroyed.[0m
+[0m[1m[32m
+Outputs:
+
+[0mfile_path = "./out/hello-usually-caring-whale.txt"
+[?2004h]0;vinh2@vi: ~/work/devops-training-NguyenQuangVinh/day-3-terraform/1-local[01;32mvinh2@vi[00m:[01;34m~/work/devops-training-NguyenQuangVinh/day-3-terraform/1-local[00m$ [7mterraform destroy -auto-approve[27mterraform destroy -auto-approve
+[?2004l
+[0m[1mrandom_pet.name: Refreshing state... [id=usually-caring-whale][0m
+[0m[1mlocal_file.hello: Refreshing state... [id=4115004068cb89b1a8f785668a1f57e3f9d0024e][0m
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the
+following symbols:
+  [31m-[0m destroy[0m
+
+Terraform will perform the following actions:
+
+[1m  # local_file.hello[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "local_file" "hello" {
+      [31m-[0m[0m content              = "Hello from terraform, usually-caring-whale!" [90m-> null[0m[0m
+      [31m-[0m[0m content_base64sha256 = "SluFDJuWmc3NFfNacEwCpH5YqHb8qvvoFqxapGFYFBE=" [90m-> null[0m[0m
+      [31m-[0m[0m content_base64sha512 = "8aoSU5Ea48LFrcQMRPXCPweEpbGx9KzVFTI1vXAOVNxlvySDQqNQJ3MhavLI8UBTkLa84DW5Fz75KwL8v/Fgrg==" [90m-> null[0m[0m
+      [31m-[0m[0m content_md5          = "3379dc834aad0355ab40b09ecce04b76" [90m-> null[0m[0m
+      [31m-[0m[0m content_sha1         = "4115004068cb89b1a8f785668a1f57e3f9d0024e" [90m-> null[0m[0m
+      [31m-[0m[0m content_sha256       = "4a5b850c9b9699cdcd15f35a704c02a47e58a876fcaafbe816ac5aa461581411" [90m-> null[0m[0m
+      [31m-[0m[0m content_sha512       = "f1aa1253911ae3c2c5adc40c44f5c23f0784a5b1b1f4acd5153235bd700e54dc65bf248342a3502773216af2c8f1405390b6bce035b9173ef92b02fcbff160ae" [90m-> null[0m[0m
+      [31m-[0m[0m directory_permission = "0777" [90m-> null[0m[0m
+      [31m-[0m[0m file_permission      = "0777" [90m-> null[0m[0m
+      [31m-[0m[0m filename             = "./out/hello-usually-caring-whale.txt" [90m-> null[0m[0m
+      [31m-[0m[0m id                   = "4115004068cb89b1a8f785668a1f57e3f9d0024e" [90m-> null[0m[0m
+    }
+
+[1m  # random_pet.name[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "random_pet" "name" {
+      [31m-[0m[0m id        = "usually-caring-whale" [90m-> null[0m[0m
+      [31m-[0m[0m length    = 3 [90m-> null[0m[0m
+      [31m-[0m[0m separator = "-" [90m-> null[0m[0m
+    }
+
+[1mPlan:[0m [0m0 to add, 0 to change, 2 to destroy.
+
+Changes to Outputs:
+  [31m-[0m[0m file_path = "./out/hello-usually-caring-whale.txt" [90m-> null[0m[0m
+[0m[1mlocal_file.hello: Destroying... [id=4115004068cb89b1a8f785668a1f57e3f9d0024e][0m[0m
+[0m[1mlocal_file.hello: Destruction complete after 0s[0m
+[0m[1mrandom_pet.name: Destroying... [id=usually-caring-whale][0m[0m
+[0m[1mrandom_pet.name: Destruction complete after 0s[0m
+[0m[1m[32m
+Destroy complete! Resources: 2 destroyed.[0m
+[?2004h]0;vinh2@vi: ~/work/devops-training-NguyenQuangVinh/day-3-terraform/1-local[01;32mvinh2@vi[00m:[01;34m~/work/devops-training-NguyenQuangVinh/day-3-terraform/1-local[00m$ [7mexit[27mexit
+[?2004l
+exit
+
+Script done on 2026-06-23 07:38:07+00:00 [COMMAND_EXIT_CODE="0"]
