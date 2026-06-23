@@ -1,4 +1,4 @@
-# Part E — Failure Scenarios
+# Part E 
 
 ## 1. Khi pipeline thất bại ở step `push`, làm sao retry nhanh không build lại?
 
@@ -30,3 +30,19 @@ push-job:
 ```
 
 → Nếu `push` fail, retry `push-job` → chỉ load + push, không build lại.
+
+## 2. Cách debug 1 job mà chỉ fail trên runner (không tái hiện local)?
+
+Nguyên nhân: Runner khác môi trường local
+
+**Giải pháp: Bật debug log (`ACTIONS_STEP_DEBUG`).**
+
+**Cách làm:**
+
+Vào GitHub repo → Settings → Secrets and variables → Actions → New repository secret:
+
+- name: `ACTIONS_STEP_DEBUG` 
+- secret: true
+
+Sau đó chạy lại workflow → log in ra chi tiết từng step: command được chạy, output, biến môi trường, thời gian thực thi.
+![debug_runner](./screenshots/debug_runner.png)
