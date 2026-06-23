@@ -46,3 +46,30 @@ Vào GitHub repo → Settings → Secrets and variables → Actions → New repo
 
 Sau đó chạy lại workflow → log in ra chi tiết từng step: command được chạy, output, biến môi trường, thời gian thực thi.
 ![debug_runner](./screenshots/debug_runner.png)
+
+## 3. So sánh `needs` vs `if` vs `concurrency` group
+
+**`needs`** — Kiểm soát thứ tự chạy job.
+- Job chỉ chạy sau khi job trong `needs` thành công.
+- Ví dụ: `build-and-push` cần `test` pass trước → `needs: test`
+
+**`if`** — Kiểm soát có chạy job hay không.
+- Job chạy nếu điều kiện đúng, không quan tâm `needs`.
+- Ví dụ: Job `deploy-prod` chỉ chạy khi push tag → `if: startsWith(github.ref, 'refs/tags/v')`
+
+**`concurrency`** — Giới hạn số workflow chạy cùng lúc.
+- Nếu group đang chạy → cancel workflow cũ hoặc queue.
+- Ví dụ: Cùng lúc chỉ 1 deploy lên production → `concurrency: group: production`
+
+## 4. Tại sao nên dùng OIDC để auth AWS thay vì static access key?
+
+**OIDC:**
+- Token tự động hết hạn sau vài phút, không lưu lâu dài.
+- Role AWS gắn với từng repo/branch cụ thể
+- Không cần rotate key định kỳ.
+
+**Static Access Key:** 
+- Key tồn tại vĩnh viễn đến khi revoke — nếu leak là mất AWS.
+- Key có quyền như nhau cho mọi workflow, khó kiểm soát.
+- Phải rotate định kỳ, dễ quên.
+
