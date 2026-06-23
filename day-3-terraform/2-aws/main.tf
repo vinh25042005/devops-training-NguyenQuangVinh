@@ -89,3 +89,37 @@ resource "aws_security_group" "web" {
 
   tags = { Name = "devops-training-web-sg" }
 }
+
+# Ngĩn
+data "cloudinit_config" "nginx" {
+  gzip          = false
+  base64_encode = false
+
+  part {
+    content_type = "text/x-shellscript"
+    content      = <<-SCRIPT
+      #!/bin/bash
+      dnf install -y nginx
+      echo "hello from $(hostname -f)" > /usr/share/nginx/html/index.html
+      systemctl enable nginx
+      systemctl start nginx
+    SCRIPT
+  }
+}
+
+# EC2
+resource "aws_instance" "web" {
+  ami                    = data.aws_ami.amazon_linux.id
+  instance_type          = "t3.micro"
+  subnet_id              = aws_subnet.public[0].id
+  vpc_security_group_ids = [aws_security_group.web.id]
+  user_data              = data.cloudinit_config.nginx.rendered
+  tags = { Name = "devops-training-web" }
+}
+
+# Elastic IP
+resource "aws_eip" "web" {
+  instance = aws_instance.web.id
+  domain   = "vpc"
+  tags     = { Name = "devops-training-eip" }
+}
