@@ -1,0 +1,4 @@
+2026-06-23 08:20:17 tfstate-vinh-1782202788
+
+Completed 12 Bytes/12 Bytes (39 Bytes/s) with 1 file(s) remaining
+upload failed: ./test.txt to s3://tfstate-vinh-1782202788/test.txt An error occurred (AccessDenied) when calling the PutObject operation: User: arn:aws:iam::790400775134:user/test-ro is not authorized to perform: s3:PutObject on resource: "arn:aws:s3:::tfstate-vinh-1782202788/test.txt" because no identity-based policy allows the s3:PutObject action
