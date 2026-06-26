@@ -54,3 +54,9 @@
 
 ## 5. Khi 1 user nằm trong group có Allow, và policy gắn trực tiếp user có Deny — kết quả?
 - kết quả luôn là deny, nếu trong 100 group có allow mà chỉ 1 cái deny cũng bị chặn
+
+
+# Part E VPC topology
+![VPC topo](screenshots/VPC_topo.png)
+- Tại sao private: Không ai cần gọi trực tiếp EC2. Mọi request qua ALB. EC2 private => không public IP =>  bảo mật hơn
+- Ra interneet qua NAT GW
