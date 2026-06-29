@@ -3,8 +3,8 @@
 - **Intern**: `Nguyễn Quang Vinh`
 - **Phase / Week / Day**: `Phase 1 / Week 2 / Day 5`
 - **Branch**: `phase-1/week-2/day-5-observability`
-- **Submitted at**: `<YYYY-MM-DD HH:MM>` (timezone +07)
-- **Time spent**: `<số giờ>`
+- **Submitted at**: `<2026-06-29 15:30>` (timezone +07)
+- **Time spent**: `<5h>`
 
 ## 1. Mục tiêu
 
