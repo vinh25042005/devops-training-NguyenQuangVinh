@@ -7,3 +7,6 @@
 
 ## Control panel
 - **kube-api-server**: xử lý các yêu cầu quản trị, cấu hình, tương tác trong cụm k8s
+- **etcd**: lưu cấu hình của cụm k8s, các trạng thái của pod, node,...
+- **kube-scheduler**: phân phối pod đến node dựa trên cpu, ram, ... theo chỉ định của mình
+- **controller-manager**: quản lý các tiến trình giám sát trạng thái của cụm k8s
